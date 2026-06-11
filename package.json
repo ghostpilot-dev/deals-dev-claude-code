@@ -1,0 +1,24 @@
+{
+  "name": "deals-dev-claude-code",
+  "version": "0.1.0",
+  "description": "deals.dev for Claude Code — a sponsored status line that pays you 70% of the ad revenue while Claude works.",
+  "license": "MIT",
+  "bin": {
+    "deals-dev-claude": "./statusline.js"
+  },
+  "files": [
+    "statusline.js",
+    "install.sh",
+    ".claude-plugin",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "claude-code",
+    "claude",
+    "statusline",
+    "plugin"
+  ]
+}

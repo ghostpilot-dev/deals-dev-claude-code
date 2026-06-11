@@ -1,0 +1,11 @@
+{
+  "name": "deals-dev",
+  "description": "Earn while Claude thinks — one sponsored status line, 70% of the ad revenue goes to you.",
+  "version": "0.1.0",
+  "author": {
+    "name": "deals.dev",
+    "url": "https://deals.dev"
+  },
+  "homepage": "https://deals.dev/docs",
+  "license": "MIT"
+}
