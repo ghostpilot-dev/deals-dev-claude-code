@@ -50,10 +50,15 @@ Add to `~/.claude/settings.json`:
 {
   "statusLine": {
     "type": "command",
-    "command": "node /path/to/this/repo/statusline.js"
+    "command": "node /path/to/this/repo/statusline.js",
+    "refreshInterval": 10
   }
 }
 ```
+
+`refreshInterval` keeps ads rotating every 10 seconds even while the
+session is idle — without it, Claude Code only re-runs the status line on
+conversation events.
 
 Provide your key either in `~/.deals-dev/config.json`:
 

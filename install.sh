@@ -31,6 +31,7 @@ try { settings = JSON.parse(fs.readFileSync(file, 'utf8')); } catch {}
 settings.statusLine = {
   type: 'command',
   command: 'node $SCRIPT_DIR/statusline.js',
+  refreshInterval: 10,
 };
 fs.writeFileSync(file, JSON.stringify(settings, null, 2));
 "
