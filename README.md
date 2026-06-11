@@ -76,7 +76,7 @@ Optional: point at a different API host (e.g. for self-hosting) with
    session JSON to stdin (the script reads and ignores it — nothing is sent
    anywhere).
 2. The script fetches the current top-bidding ad from
-   `GET https://deals.dev/api/v1/ad` and caches it for ~6 seconds — one
+   `GET https://deals.dev/api/v1/ad` and caches it for ~10 seconds — one
    five-second display block plus slack.
 3. When the block is up, the impression is confirmed via
    `POST /api/v1/events` and the next ad is fetched. Confirmation is what

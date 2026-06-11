@@ -3,7 +3,7 @@
  * deals.dev statusline for Claude Code.
  *
  * Claude Code invokes this command for every status-line refresh and pipes
- * session JSON to stdin. We print one sponsored line; each ~6 seconds of
+ * session JSON to stdin. We print one sponsored line; each ~10 seconds of
  * activity becomes a confirmed impression worth 70% of the current bid.
  *
  * Configure via ~/.deals-dev/config.json (written by install.sh) or the
@@ -17,7 +17,7 @@ const path = require("path");
 const CONFIG_DIR = path.join(os.homedir(), ".deals-dev");
 const CONFIG_FILE = path.join(CONFIG_DIR, "config.json");
 const CACHE_FILE = path.join(CONFIG_DIR, "claude-cache.json");
-const AD_TTL_MS = 6_000;
+const AD_TTL_MS = 10_000;
 const FETCH_TIMEOUT_MS = 1_500;
 
 const DIM = "\x1b[2m";
