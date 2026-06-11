@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "deals.dev for Claude Code — a sponsored status line that pays you 70% of the ad revenue while Claude works.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghostpilot-dev/deals-dev-claude-code.git"
+  },
+  "homepage": "https://github.com/ghostpilot-dev/deals-dev-claude-code#readme",
   "bin": {
     "deals-dev-claude": "./statusline.js"
   },
