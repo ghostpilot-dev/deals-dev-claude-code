@@ -24,10 +24,28 @@ const DIM = "\x1b[2m";
 const CYAN = "\x1b[36m";
 const RESET = "\x1b[0m";
 
+/** Strip terminal control chars from advertiser text (anti escape-injection). */
+function sanitizeText(s) {
+  // eslint-disable-next-line no-control-regex
+  return String(s == null ? "" : s).replace(/[\x00-\x1f\x7f-\x9f]/g, "");
+}
+
+/** Only http(s) URLs may be embedded as hyperlinks. */
+function safeUrl(url) {
+  if (typeof url !== "string") return null;
+  try {
+    const u = new URL(url);
+    return u.protocol === "https:" || u.protocol === "http:" ? u.href : null;
+  } catch {
+    return null;
+  }
+}
+
 /** OSC 8 terminal hyperlink — cmd/ctrl+click registers a tracked click (50x payout). */
 function osc8(text, url) {
-  if (!url) return text;
-  return `\x1b]8;;${url}\x1b\\${text}\x1b]8;;\x1b\\`;
+  const safe = safeUrl(url);
+  if (!safe) return text;
+  return `\x1b]8;;${safe}\x1b\\${text}\x1b]8;;\x1b\\`;
 }
 
 function readJson(file, fallback) {
@@ -120,9 +138,9 @@ async function main() {
     process.stdout.write(`${DIM}deals.dev · no ads live${RESET}`);
     return;
   }
-  const label = cache.ad.brandName
-    ? `${cache.ad.brandName} — ${cache.ad.adLine}`
-    : cache.ad.adLine;
+  const brand = sanitizeText(cache.ad.brandName);
+  const line = sanitizeText(cache.ad.adLine);
+  const label = brand ? `${brand} — ${line}` : line;
   process.stdout.write(
     `${CYAN}${osc8(label, cache.ad.clickUrl)}${RESET} ${DIM}· you earn 70%${RESET}`
   );
